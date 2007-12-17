@@ -57,7 +57,6 @@ Patch92:	wmdiscotux-gcc2.96.patch
 License:	GPL
 Group:		Sound
 URL:		http://www.xmms.org/
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 Requires:	xmms >= 1.0.0
 # (gc) yes the binary of xmms is tested for existence in the configure script
 BuildRequires:	SDL-devel
