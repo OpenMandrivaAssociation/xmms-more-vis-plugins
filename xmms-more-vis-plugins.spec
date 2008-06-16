@@ -1,6 +1,6 @@
 %define name xmms-more-vis-plugins
 %define version 1.8.0
-%define release %mkrel 18
+%define release %mkrel 19
 
 %define plug0 jakdaw-0.0.4
 %define plug1 synaesthesia-xmms-0.0.3-rc3
