@@ -1,6 +1,6 @@
 %define name xmms-more-vis-plugins
 %define version 1.8.0
-%define release %mkrel 21
+%define release %mkrel 22
 
 %define plug0 jakdaw-0.0.4
 %define plug1 synaesthesia-xmms-0.0.3-rc3
@@ -71,7 +71,7 @@ BuildRequires:	xmms-devel
 BuildRequires:	xmms
 BuildRequires:	texinfo
 BuildRequires:	automake1.4
-BuildRequires:	automake1.7
+BuildRequires:	automake
 BuildRequires:	automake1.8
 #gw for running aclocal, needed by infinity-plugin
 BuildRequires:	glib-gettextize
@@ -160,9 +160,9 @@ perl -pi -e 's/mkdirhier/mkdir -p/' gforce*/Makefile*
 %build
 cd %{plug0}
 rm -f configure
-aclocal-1.7
+aclocal
 autoconf
-automake-1.7 -a
+automake -a
 %configure2_5x
 %make
 cd ..
