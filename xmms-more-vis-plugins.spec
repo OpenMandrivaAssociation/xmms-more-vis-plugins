@@ -1,3 +1,5 @@
+%define _disable_ld_no_undefined 1
+
 %define name xmms-more-vis-plugins
 %define version 1.8.0
 %define release %mkrel 22
@@ -39,11 +41,9 @@ Source12:	http://heanet.dl.sourceforge.net/sourceforge/vigor/%{plug12}.tar.bz2
 Source100:	ltconfig.bz2
 Patch20:	xmms_speakers-2.01.patch
 Patch0:		jakdaw-gcc2.96.patch
-Patch100:	xmms-nebulus-0.8.0-dont-stop-right-after-start.patch
 Patch10:	synaesthesia-xmms-0.0.3-gcc3.4.patch
 Patch11:	synaesthesia-xmms-0.0.3-rc3-gcc4_0.patch
 Patch40:	bump_scope-0.0.3-gcc3.4.patch
-
 Patch52:	jess-2.9.1-gcc3.4.patch
 Patch60:	gforce-fix-compile.patch
 Patch61:	gforce-1.1.6xp3.dga.patch
@@ -54,6 +54,10 @@ Patch71:	paranormal-0.2.0-gcc3.4.patch
 Patch90:	wmdiscotux-1.3.patch
 Patch91:	wmdiscotux-1.3.-gcc3.3.patch
 Patch92:	wmdiscotux-gcc2.96.patch
+Patch100:	xmms-nebulus-0.8.0-dont-stop-right-after-start.patch
+Patch101:	xmms-more-vis-plugins-1.8.0-fmtstr.diff
+Patch102:	xmms-more-vis-plugins-1.8.0-linkage_fix.diff
+Patch103:	xmms-more-vis-plugins-1.8.0-autopoo_fixes.diff
 License:	GPL
 Group:		Sound
 URL:		http://www.xmms.org/
@@ -70,9 +74,9 @@ BuildRequires:	libxml2-devel
 BuildRequires:	xmms-devel
 BuildRequires:	xmms
 BuildRequires:	texinfo
-BuildRequires:	automake1.4
+#BuildRequires:	automake1.4
 BuildRequires:	automake
-BuildRequires:	automake1.8
+#BuildRequires:	automake1.8
 #gw for running aclocal, needed by infinity-plugin
 BuildRequires:	glib-gettextize
 BuildRequires:  chrpath
@@ -147,6 +151,10 @@ Install this if you want to embed the GOOM! in your own programs.
 %patch91
 %patch92
 %patch100 -p0
+%patch101 -p0
+%patch102 -p0
+%patch103 -p1
+
 #wmdiscotux doesn't know lib64
 perl -pi -e "s^/lib^/%_lib^g" %plug9/Makefile
 
@@ -160,9 +168,7 @@ perl -pi -e 's/mkdirhier/mkdir -p/' gforce*/Makefile*
 %build
 cd %{plug0}
 rm -f configure
-aclocal
-autoconf
-automake -a
+autoreconf -fi
 %configure2_5x
 %make
 cd ..
@@ -172,6 +178,8 @@ cd %{plug9}
 cd ..
 
 cd goom2k4-0
+rm -f configure
+autoreconf -fi
 %configure2_5x
 %make
 #gw prevent relinking
@@ -181,25 +189,24 @@ cd ..
 for i in %{plug1} %{plug4} %{plug5}
 do
   cd $i
-  %configure
+  rm -f configure
+  autoreconf -fi
+  %configure2_5x
   %make
   cd ..
 done
 
 cd %{plug2}
 rm -f configure
-aclocal-1.4
-autoconf
-automake-1.4
+autoreconf -fi
 %configure2_5x --libdir=%{_libdir}/xmms/Visualization
 %make
 cd ..
  
 cd %{plug3}
+rm -f configure
 rm -f config.cache
-aclocal-1.8
-automake-1.8
-autoconf
+autoreconf -fi
 %configure2_5x \
 %ifarch ppc
   --disable-mmx
@@ -211,10 +218,7 @@ cd ..
 %ifnarch x86_64
 cd %{plug6}
 rm -f configure
-aclocal-1.4
-autoheader
-automake-1.4
-autoconf
+autoreconf -fi
 %configure2_5x
 make
 cd ..
@@ -222,20 +226,14 @@ cd ..
 
 cd  %{plug7}
 rm -f configure
-aclocal-1.4
-libtoolize --copy --force
-automake-1.4
-autoconf
+autoreconf -fi
 %configure2_5x
 %make
 cd ..
 
 cd  %{plug12}
 rm -f configure
-aclocal-1.8
-libtoolize --copy --force
-automake-1.8
-autoconf
+autoreconf -fi
 %configure2_5x
 %make
 cd ..
@@ -243,6 +241,8 @@ cd ..
 for i in %{plug8} %{plug10}
 do
   cd $i
+  rm -f configure
+  autoreconf -fi
   %configure2_5x
   %make
   cd ..
