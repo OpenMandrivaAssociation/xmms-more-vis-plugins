@@ -139,7 +139,7 @@ Install this if you want to embed the GOOM! in your own programs.
 %patch10
 # %patch11 -b .gcc4_0
 %patch20
-%patch40 
+# %patch40 
 %patch52
 %patch60
 %patch61
