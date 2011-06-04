@@ -137,7 +137,7 @@ Install this if you want to embed the GOOM! in your own programs.
 %setup -q -c -a 0 -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12
 %patch0
 %patch10
-%patch11 -b .gcc4_0
+# %patch11 -b .gcc4_0
 %patch20
 %patch40 
 %patch52
