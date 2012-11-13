@@ -1,0 +1,25 @@
+--- goom2k4-0/src/Makefile.am	2005-02-07 14:46:41.000000000 +0100
++++ goom2k4-0/src/Makefile.am.oden	2011-01-04 12:50:20.892251777 +0100
+@@ -17,7 +17,7 @@
+ 
+ goom2_library_includedir=$(includedir)/goom
+ goom2_library_include_HEADERS = goom.h goom_plugin_info.h goom_typedefs.h goom_graphic.h goom_config_param.h goom_visual_fx.h goom_filters.h goom_tools.h goomsl.h goomsl_hash.h goomsl_heap.h goom_tools.h goom_config.h
+-libgoom2_la_LDFLAGS = -export-dynamic -export-symbols-regex "goom.*" 
++libgoom2_la_LDFLAGS = -export-dynamic -export-symbols-regex "goom.*" -lm
+ libgoom2_la_SOURCES = \
+ 	goomsl_yacc.y goomsl_lex.l goomsl.c goomsl_hash.c goomsl_heap.c \
+ 	goom_tools.c $(MMX_FILES) $(PPC_FILES) \
+--- synaesthesia-xmms-0.0.3-rc3/Makefile.am	2001-04-26 22:58:08.000000000 +0200
++++ synaesthesia-xmms-0.0.3-rc3/Makefile.am.oden	2011-01-04 12:56:03.683541249 +0100
+@@ -1,9 +1,10 @@
+ lib_LTLIBRARIES = libsynaesthesia.la
+ 
+ libdir = @XMMS_VISUALIZATION_PLUGIN_DIR@
++LIBS = @XMMS_LIBS@ @GTK_LIBS@
+ 
+ libsynaesthesia_la_LDFLAGS = -module -avoid-version
+-LIBS = @XMMS_LIBS@ @GTK_LIBS@
++libsynaesthesia_la_LIBS = @XMMS_LIBS@ @GTK_LIBS@
+ 
+ COMMON_CFLAGS = -O2 -Wall -g -I$(top_builddir) -I$(top_srcdir) -D_REENTRANT @XMMS_CFLAGS@ @GTK_CFLAGS@
+ COMMON_SRC = syna_xmms.c syna_xmms.h syna.h syna_config.c syna_core.c

@@ -1,0 +1,11 @@
+--- jakdaw-0.0.4/jakdaw.h.gege	Sun Jan  9 14:47:58 2000
++++ jakdaw-0.0.4/jakdaw.h	Mon Nov  6 13:52:09 2000
+@@ -25,7 +25,8 @@
+ 
+ #include <glib.h>
+ #include <pthread.h>
++#include <string.h>
+ #include <xmms/plugin.h>
+ 
+ #define TITLE "Jakdaw's Plugin"
+ #define DESCRIPTION TITLE" - "VERSION

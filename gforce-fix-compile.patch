@@ -1,0 +1,22 @@
+--- ./gforce-1.1.6xp3/Common/General Tools/Hashtable.cpp.gege	Mon Dec  4 00:59:25 2000
++++ ./gforce-1.1.6xp3/Common/General Tools/Hashtable.cpp	Mon Mar  5 22:09:24 2001
+@@ -157,7 +157,7 @@
+ 	for ( i = 0; i < mTableSize; i++ ) {
+ 		entry = *entryP;
+ 		while ( entry ) {
+-			outKeys.Add( ( entry -> mHashable ) ? entry -> mHashable : (void*) entry -> mKey );
++			outKeys.Add( ( entry -> mHashable ) ? (void*) entry -> mHashable : (void*) entry -> mKey );
+ 			entry = entry -> mNext;
+ 		}
+ 
+--- ./gforce-1.1.6xp3/_Unix-X/libxpce/xvhandler.c.gege	Fri Dec  8 22:33:46 2000
++++ ./gforce-1.1.6xp3/_Unix-X/libxpce/xvhandler.c	Mon Mar  5 22:10:54 2001
+@@ -342,7 +342,7 @@
+ 
+ /* x_DCTCEDoComp() - Do one component for DCTCE */
+ int x_DCTCEDoComp(int mask, int color) {
+-  static const char cnames[] = { "red", "green", "blue" };
++  static const char * cnames[] = { "red", "green", "blue" };
+   static const char cflags[] = { DoRed, DoGreen, DoBlue }; 
+   static unsigned long int * const carrays[] = { X_redmap, 
+ 						 X_greenmap, 

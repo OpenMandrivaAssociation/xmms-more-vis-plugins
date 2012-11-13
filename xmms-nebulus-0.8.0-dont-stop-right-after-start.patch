@@ -1,0 +1,15 @@
+--- xmms-nebulus-0.8.0/src/nebulus.c~	2007-01-07 15:11:09.000000000 +0100
++++ xmms-nebulus-0.8.0/src/nebulus.c	2007-01-09 07:46:52.000000000 +0100
+@@ -345,10 +345,10 @@
+ 
+   while (SDL_PollEvent(&event));
+   switch (event.type) {
+-    case SDL_QUIT:
++    /*    case SDL_QUIT:
+       point_general->finished = TRUE;
+       point_general->in_thread = TRUE;
+-      break;
++      break; */
+     case SDL_VIDEORESIZE:
+       if (event.resize.h < point_general->HEIGHT
+         || event.resize.h > point_general->HEIGHT

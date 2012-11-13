@@ -1,0 +1,50 @@
+--- synaesthesia-xmms-0.0.3-rc3/syna.h.bak	2005-05-23 23:47:14.000000000 +0200
++++ synaesthesia-xmms-0.0.3-rc3/syna.h	2005-05-24 18:34:59.431818266 +0200
+@@ -51,10 +51,10 @@
+ */
+ 
+ /* core */
+-extern guint16 *synx_output[3];
+-#define output ((guchar*)(synx_output[0]))
+-#define lastOutput ((guchar*)(synx_output[1]))
+-#define lastLastOutput ((guchar*)(synx_output[2]))
++extern guchar *synx_output[3];
++#define output (synx_output[0])
++#define lastOutput (synx_output[1])
++#define lastLastOutput (synx_output[2])
+ 
+ #define fadeMode (synx_cfg.fadeMode)
+ #define starSize (synx_cfg.starSize)
+--- synaesthesia-xmms-0.0.3-rc3/syna_xmms.c.bak	2005-05-23 23:47:13.000000000 +0200
++++ synaesthesia-xmms-0.0.3-rc3/syna_xmms.c	2005-05-24 18:36:19.173527543 +0200
+@@ -44,7 +44,7 @@
+ static pthread_mutex_t dummy_mutex = PTHREAD_MUTEX_INITIALIZER;
+ 
+ int synx_img_w = 0, synx_img_h = 0;
+-guint16 *synx_output[3] = { NULL, NULL, NULL };
++guchar *synx_output[3] = { NULL, NULL, NULL };
+ gboolean synx_am_fullscreen = FALSE;
+ 
+ static GtkWidget *window = NULL, *area = NULL;
+@@ -239,9 +239,9 @@
+ 
+ 	synx_img_w = new_img_w; synx_img_h = new_img_h;
+ 
+-	synx_output[0] = (guint16*)g_malloc(synx_img_w*synx_img_h*2);
+-	synx_output[1] = (guint16*)g_malloc(synx_img_w*synx_img_h*2);
+-	synx_output[2] = (guint16*)g_malloc(synx_img_w*synx_img_h*2);
++	synx_output[0] = (guchar*)g_malloc(synx_img_w*synx_img_h*2);
++	synx_output[1] = (guchar*)g_malloc(synx_img_w*synx_img_h*2);
++	synx_output[2] = (guchar*)g_malloc(synx_img_w*synx_img_h*2);
+ 
+ 	if (!synx_am_fullscreen && window) {
+ 		win_w = synx_img_w; win_h = synx_img_h;
+@@ -400,7 +400,7 @@
+ 			syna_fade();
+ 			syna_coreGo(pcm_data);
+ 
+-			synx_screenShow(synx_output[0], tmpscr);
++			synx_screenShow((guint16 *)synx_output[0], tmpscr);
+ 			gdk_draw_indexed_image(area->window,area->style->white_gc,(win_w-synx_img_w)/2,(win_h-synx_img_h)/2,synx_img_w,synx_img_h,GDK_RGB_DITHER_NONE,tmpscr,synx_img_w,cmap);
+ 		}
+ 		SYNX_UNLOCK();

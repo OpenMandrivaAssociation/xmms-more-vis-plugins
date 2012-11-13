@@ -1,0 +1,71 @@
+diff -Naur xmms-more-vis-plugins-1.8.0/bump_scope-0.0.3/configure.in xmms-more-vis-plugins-1.8.0.oden/bump_scope-0.0.3/configure.in
+--- xmms-more-vis-plugins-1.8.0/bump_scope-0.0.3/configure.in	2001-07-18 23:45:39.000000000 +0200
++++ xmms-more-vis-plugins-1.8.0.oden/bump_scope-0.0.3/configure.in	2011-01-04 14:11:31.936505750 +0100
+@@ -4,6 +4,7 @@
+ AM_CONFIG_HEADER(config.h)
+ AM_DISABLE_STATIC
+ AM_PROG_LIBTOOL
++AM_PROG_AS
+ 
+ dnl Checks for programs.
+ AC_PROG_CC
+diff -Naur xmms-more-vis-plugins-1.8.0/goom2k4-0/configure.in xmms-more-vis-plugins-1.8.0.oden/goom2k4-0/configure.in
+--- xmms-more-vis-plugins-1.8.0/goom2k4-0/configure.in	2005-02-07 14:46:41.000000000 +0100
++++ xmms-more-vis-plugins-1.8.0.oden/goom2k4-0/configure.in	2011-01-04 14:11:31.935505874 +0100
+@@ -2,7 +2,7 @@
+ 
+ AM_DISABLE_STATIC
+ AM_INIT_AUTOMAKE(SDL_Goom, 2k4)
+-
++AC_CONFIG_MACRO_DIR([m4])
+ ACLOCAL="$ACLOCAL -I m4"
+ 
+ AM_PROG_LIBTOOL
+diff -Naur xmms-more-vis-plugins-1.8.0/goom2k4-0/Makefile.am xmms-more-vis-plugins-1.8.0.oden/goom2k4-0/Makefile.am
+--- xmms-more-vis-plugins-1.8.0/goom2k4-0/Makefile.am	2005-02-07 14:46:41.000000000 +0100
++++ xmms-more-vis-plugins-1.8.0.oden/goom2k4-0/Makefile.am	2011-01-04 14:11:31.935505874 +0100
+@@ -1,5 +1,7 @@
+ SUBDIRS = src xmms-goom sdl-goom @MACFOLDER@
+ 
++ACLOCAL_AMFLAGS = -I m4
++
+ #.pc file
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = libgoom2.pc
+diff -Naur xmms-more-vis-plugins-1.8.0/goom2k4-0/src/Makefile.am xmms-more-vis-plugins-1.8.0.oden/goom2k4-0/src/Makefile.am
+--- xmms-more-vis-plugins-1.8.0/goom2k4-0/src/Makefile.am	2011-01-04 14:10:55.742010898 +0100
++++ xmms-more-vis-plugins-1.8.0.oden/goom2k4-0/src/Makefile.am	2011-01-04 14:12:18.026768880 +0100
+@@ -16,7 +16,7 @@
+ goom2_libdir = $(libdir)
+ 
+ goom2_library_includedir=$(includedir)/goom
+-goom2_library_include_HEADERS = goom.h goom_plugin_info.h goom_typedefs.h goom_graphic.h goom_config_param.h goom_visual_fx.h goom_filters.h goom_tools.h goomsl.h goomsl_hash.h goomsl_heap.h goom_tools.h goom_config.h
++goom2_library_include_HEADERS = goom.h goom_plugin_info.h goom_typedefs.h goom_graphic.h goom_config_param.h goom_visual_fx.h goom_filters.h goom_tools.h goomsl.h goomsl_hash.h goomsl_heap.h goom_config.h
+ libgoom2_la_LDFLAGS = -export-dynamic -export-symbols-regex "goom.*" -lm
+ libgoom2_la_SOURCES = \
+ 	goomsl_yacc.y goomsl_lex.l goomsl.c goomsl_hash.c goomsl_heap.c \
+diff -Naur xmms-more-vis-plugins-1.8.0/paranormal-0.2.0/Makefile.am xmms-more-vis-plugins-1.8.0.oden/paranormal-0.2.0/Makefile.am
+--- xmms-more-vis-plugins-1.8.0/paranormal-0.2.0/Makefile.am	2001-05-01 01:10:32.000000000 +0200
++++ xmms-more-vis-plugins-1.8.0.oden/paranormal-0.2.0/Makefile.am	2011-01-04 14:11:31.938505500 +0100
+@@ -1,5 +1,4 @@
+ lib_LTLIBRARIES = libparanormal.la
+-bin_PROGRAMS = pndoc paranormal
+ 
+ libdir = @XMMS_PLUGIN_DIR@/Visualization
+ 
+@@ -10,8 +9,6 @@
+ BUILTIN_SOURCES = builtins.c pn_utils.h containers.c containers.h cmaps.c \
+ 	freq.c wave.c general.c xform.c
+ XMMS_SOURCES = xmms.c
+-STANDALONE_SOURCES = standalone.c
+-PNDOC_SOURCES = pndoc.c
+ 
+ LIBS = @LIBS@ @XMMS_LIBS@ @GLIB_LIBS@ @GTK_LIBS@ @XML_LIBS@ @SDL_LIBS@
+ CFLAGS = @CFLAGS@ -Wall @XMMS_CFLAGS@ @GLIB_CFLAGS@ @GTK_CFLAGS@ \
+@@ -19,6 +16,3 @@
+ 
+ libparanormal_la_SOURCES = $(COMMON_SOURCES) $(BUILTIN_SOURCES) $(EXEC_SOURCES) \
+ 	$(XMMS_SOURCES)
+-paranormal_SOURCES = $(COMMON_SOURCES) $(BUILTIN_SOURCES) $(EXEC_SOURCES) \
+-	$(STANDALONE_SOURCES)
+-pndoc_SOURCES = $(COMMON_SOURCES) $(BUILTIN_SOURCES) $(PNDOC_SOURCES)

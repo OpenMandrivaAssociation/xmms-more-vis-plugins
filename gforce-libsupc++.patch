@@ -1,0 +1,11 @@
+--- ./gforce-1.1.6xp3/Makefile.am.gege	2002-07-29 11:22:01.000000000 +0200
++++ ./gforce-1.1.6xp3/Makefile.am	2002-07-29 11:41:36.000000000 +0200
+@@ -35,7 +35,7 @@
+ Common/UI/libUI.la \
+ Common/General_Tools/libgt.la \
+ _Unix-X/libmfl/libmfl.la \
+-_Unix-X/libxpce/libxpce.la
++_Unix-X/libxpce/libxpce.la -lsupc++ -lgcc_s
+ 
+ endif
+ 

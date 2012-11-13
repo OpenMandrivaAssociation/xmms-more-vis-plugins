@@ -1,0 +1,20 @@
+--- paranormal-0.2.0/actuators.c~	2001-05-13 06:26:31.000000000 +0200
++++ paranormal-0.2.0/actuators.c	2004-06-08 13:27:25.703421983 +0200
+@@ -45,6 +45,7 @@
+ 		      sizeof (union actuator_option_val));
+ 	      break;
+ 	    case OPT_TYPE_STRING:
++	      break;
+ 	    }
+ 	}
+ 
+--- paranormal-0.2.0/paranormal.c~	2001-05-11 07:39:17.000000000 +0200
++++ paranormal-0.2.0/paranormal.c	2004-06-08 13:31:32.482454711 +0200
+@@ -168,6 +168,7 @@
+ 	      take_screenshot ();
+ 	      break;
+ 	    default:
++	      break;
+ 	    }
+ 	  break;
+ 	case SDL_VIDEORESIZE:

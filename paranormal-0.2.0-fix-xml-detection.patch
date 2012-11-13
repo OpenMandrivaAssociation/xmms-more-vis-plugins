@@ -1,0 +1,13 @@
+--- ./paranormal-0.2.0/acinclude.m4.gege	2001-04-22 23:52:05.000000000 +0200
++++ ./paranormal-0.2.0/acinclude.m4	2002-04-15 11:05:22.000000000 +0200
+@@ -584,8 +584,8 @@
+       AC_TRY_RUN([
+ #include <stdlib.h>
+ #include <stdio.h>
+-#include <xmlversion.h>
+-#include <parser.h>
++#include <libxml/xmlversion.h>
++#include <libxml/parser.h>
+ 
+ int
+ main()

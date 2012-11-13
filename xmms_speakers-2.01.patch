@@ -1,0 +1,10 @@
+--- xmms_speakers-2.01/Makefile.am.gc	Mon Mar 20 17:37:54 2000
++++ xmms_speakers-2.01/Makefile.am	Mon Mar 20 17:37:59 2000
+@@ -1,7 +1,5 @@
+ lib_LTLIBRARIES = libxmms_speakers.la
+ 
+-libdir = /usr/local/lib/xmms/Visualization
+-
+ libxmms_speakers_la_LDFLAGS = -module -avoid-version
+ LIBS = @GTK_LIBS@ 
+ 

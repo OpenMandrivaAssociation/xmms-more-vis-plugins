@@ -1,0 +1,14 @@
+--- ./gforce-1.1.6xp3/_Unix-X/libxpce/x.c.gege	2003-10-06 12:57:32.000000000 +0200
++++ ./gforce-1.1.6xp3/_Unix-X/libxpce/x.c	2003-10-06 13:08:51.000000000 +0200
+@@ -643,6 +643,11 @@
+ void x_GrabRootCMap(int);
+ 
+ void xpce_ToggleFullscreen() {
++  if (geteuid()) {
++	  fprintf(stderr, "Must be root for XF86DGA, please run as root for fullscreen\n");
++	  return;
++  }
++
+   /* Save previous window height so it can be restored when we are
+    * windowed again 
+    */

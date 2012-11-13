@@ -1,0 +1,10 @@
+--- synaesthesia-xmms-0.0.3-rc3/syna_xmms.c~	2004-06-05 12:51:18.334997326 +0200
++++ synaesthesia-xmms-0.0.3-rc3/syna_xmms.c	2004-06-05 12:47:23.374752884 +0200
+@@ -286,6 +286,7 @@
+                         break;
+                 default:
+                         /* ugh */
++			break;
+ 	}
+ }
+ 

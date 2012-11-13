@@ -1,0 +1,42 @@
+--- JESS-2.9.1/draw.c~	2002-01-19 18:39:10.000000000 +0100
++++ JESS-2.9.1/draw.c	2004-06-05 13:00:23.390521030 +0200
+@@ -511,6 +511,7 @@
+       }
+     break;
+   default:
++    break;
+   }
+   /*  printf("  Appel rotation_3d\n");
+   printf("  Appel perspective\n");
+@@ -624,6 +625,7 @@
+       break;
+ 
+     default:
++      break;
+     }
+ }
+ 
+--- JESS-2.9.1/misc.c~	2002-01-19 18:39:10.000000000 +0100
++++ JESS-2.9.1/misc.c	2004-06-05 13:05:56.504119327 +0200
+@@ -196,9 +196,11 @@
+ 	  break;
+ 
+ 	default:
++	  break;
+ 	}   
+       break;
+     default:
++      break;
+     }
+ 
+ }
+--- JESS-2.9.1/renderer.c~	2002-01-19 18:39:10.000000000 +0100
++++ JESS-2.9.1/renderer.c	2004-06-05 13:07:56.261772550 +0200
+@@ -94,6 +94,7 @@
+       break;
+ 
+     default:
++      break;
+     }
+ 
+   conteur.k3 += 10;
