@@ -60,7 +60,7 @@ Patch102:	xmms-more-vis-plugins-1.8.0-linkage_fix.diff
 Patch103:	xmms-more-vis-plugins-1.8.0-autopoo_fixes.diff
 License:	GPL
 Group:		Sound
-URL:		http://www.xmms.org/
+URL:		https://www.xmms.org/
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 Requires:	xmms >= 1.0.0
 # (gc) yes the binary of xmms is tested for existence in the configure script
